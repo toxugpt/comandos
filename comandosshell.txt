@@ -1,0 +1,103 @@
+POWERSHELL — RESUMEN PRÁCTICO
+
+CMDLETS BÁSICOS
+---------------
+
+Listar:
+Get-ChildItem
+Get-ChildItem -Recurse
+Get-ChildItem -Force
+
+Cambiar directorio:
+Set-Location carpeta
+cd carpeta
+
+Crear carpeta:
+New-Item -Name carpeta -ItemType Directory
+New-Item carpeta -ItemType Directory
+
+Crear archivo:
+New-Item archivo.txt -ItemType File
+New-Item archivo.txt -ItemType File -Value "texto"
+
+Eliminar:
+Remove-Item archivo.txt
+Remove-Item carpeta -Recurse -Force
+
+Copiar:
+Copy-Item origen destino
+Copy-Item origen destino -Recurse
+Copy-Item origen destino -PassThru
+
+Mover:
+Move-Item archivo destino
+
+Renombrar:
+Rename-Item viejo.txt -NewName nuevo.txt
+
+Ver contenido:
+Get-Content archivo.txt
+Get-Content archivo.txt -TotalCount 5
+
+ALIAS IMPORTANTES
+----------------
+
+ls = Get-ChildItem
+cd = Set-Location
+cat = Get-Content
+cp = Copy-Item
+mv = Move-Item
+rm = Remove-Item
+dir = Get-ChildItem
+
+VARIABLES
+---------
+
+Mostrar variable:
+$env:USERPROFILE
+$env:PATH
+$env:TEMP
+
+Usar variable:
+New-Item "$env:USERPROFILE\Prueba" -ItemType Directory
+
+Crear variable de entorno:
+$env:MODULO_SIIN = "C:\SI"
+
+Persistente:
+[Environment]::SetEnvironmentVariable("MODULO_SIIN","C:\SI","User")
+
+PATH añadir:
+$env:PATH += ";C:\SI"
+
+PIPELINE
+--------
+
+Listar y filtrar:
+Get-ChildItem | Where-Object {$_.Name -like "*.txt"}
+
+Ordenar:
+Get-ChildItem | Sort-Object Name
+
+Buscar texto:
+Get-Content archivo.txt | Select-String "texto"
+
+Exportar:
+Get-ChildItem > listado.txt
+
+CONCEPTOS CLAVE EXAMEN
+----------------------
+
+- Get-ChildItem lista archivos
+- Set-Location cambia carpeta
+- New-Item crea archivo/carpeta
+- Remove-Item elimina
+- Copy-Item copia
+- Move-Item mueve
+- Rename-Item renombra
+- Get-Content lee archivo
+- -Recurse incluye subcarpetas
+- -Force incluye ocultos
+- -PassThru muestra resultado
+- $env:VAR variables entorno
+- Pipeline | conecta comandos
