@@ -1,0 +1,155 @@
+COMANDOS Y VARIABLES DE ENTORNO — RESUMEN PRÁCTICO
+
+VARIABLES DE ENTORNO
+--------------------
+Una variable de entorno es un valor del sistema con formato:
+NOMBRE = VALOR
+
+Ejemplos:
+USERPROFILE = C:\Users\Usuario
+TEMP = C:\Users\Usuario\AppData\Local\Temp
+PATH = lista de rutas de programas
+
+Tipos:
+- Usuario: USERNAME, USERPROFILE, APPDATA
+- Sistema: PATH, WINDIR, SYSTEMROOT
+
+Ver variables:
+set
+echo %USERPROFILE%
+echo %PATH%
+echo %TEMP%
+
+Crear variable:
+setx NOMBRE VALOR
+
+Ejemplo:
+setx MODULO_SIIN C:\SI
+
+Variable temporal (solo sesión):
+set MODULO_SIIN=C:\SI
+
+Editar PATH (añadir ruta):
+setx PATH "%PATH%;C:\SI"
+
+Uso en BAT:
+%USERPROFILE%
+%TEMP%
+%DATE%
+
+
+COMANDOS CMD MÁS IMPORTANTES
+----------------------------
+
+Crear carpeta:
+mkdir carpeta
+mkdir carpeta\subcarpeta
+
+Borrar carpeta:
+rmdir carpeta /s /q
+
+Listar:
+dir
+dir /s
+dir /o:s
+
+Cambiar carpeta:
+cd carpeta
+cd ..
+
+Ver árbol:
+tree
+tree /f
+
+Copiar:
+copy origen destino
+xcopy origen destino /e /t
+
+Mover:
+move archivo destino
+
+Renombrar:
+ren viejo.txt nuevo.txt
+
+Eliminar archivo:
+del archivo.txt
+
+Ver archivo:
+type archivo.txt
+
+
+REDIRECCIONES
+-------------
+
+Guardar salida:
+comando > archivo.txt
+
+Añadir salida:
+comando >> archivo.txt
+
+Pipe:
+comando | otrocomando
+
+
+BÚSQUEDA Y ORDEN
+----------------
+
+Ordenar archivo:
+type archivo.txt | sort > ordenado.txt
+
+Buscar texto:
+dir C:\ /s | find "%date%" > hoy.txt
+
+
+SCRIPTS BAT TÍPICOS
+-------------------
+
+Ir a usuario:
+cd %USERPROFILE%
+
+Crear estructura:
+mkdir SMR
+mkdir SMR\DOCS
+mkdir SMR\PRACTICAS
+mkdir SMR\EXAME
+
+Borrar estructura:
+rmdir SMR /s /q
+
+Guardar árbol:
+tree C:\ /f > listadoC.txt
+
+Archivos modificados hoy:
+dir C:\ /s | find "%date%" > diaHoxe.txt
+
+Añadir resultados cada ejecución:
+dir C:\ /s | find "%date%" >> %USERPROFILE%\diaHoxe.txt
+
+Apagar PC:
+shutdown /s /t 20
+
+
+CONCEPTOS CLAVE EXAMEN PRÁCTICO
+-------------------------------
+
+- mkdir crea carpetas
+- rmdir /s /q borra carpetas con contenido
+- dir lista archivos
+- tree muestra estructura
+- copy copia archivos
+- xcopy copia carpetas
+- move mueve
+- ren renombra
+- del borra archivos
+- type muestra contenido
+- > guarda salida
+- >> añade salida
+- | conecta comandos
+- find busca texto
+- sort ordena
+- %USERPROFILE% ruta usuario
+- %DATE% fecha actual
+- set muestra variables
+- echo %VAR% muestra valor
+- setx crea variable permanente
+- PATH contiene rutas ejecutables
