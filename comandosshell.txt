@@ -6,7 +6,7 @@ CMDLETS BÁSICOS
 Listar:
 Get-ChildItem
 Get-ChildItem -Recurse
-Get-ChildItem -Force
+Get-ChildItem -Hidden
 
 Cambiar directorio:
 Set-Location carpeta
@@ -97,7 +97,7 @@ CONCEPTOS CLAVE EXAMEN
 - Rename-Item renombra
 - Get-Content lee archivo
 - -Recurse incluye subcarpetas
-- -Force incluye ocultos
+- -Hidden incluye ocultos
 - -PassThru muestra resultado
 - $env:VAR variables entorno
 - Pipeline | conecta comandos
